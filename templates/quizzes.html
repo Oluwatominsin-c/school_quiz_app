@@ -1,0 +1,31 @@
+
+{% extends "index.html" %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+       <style>
+      /* Modify the background color */
+
+      </style>
+  </head>
+  <body>
+<div class="container">
+<h3>Here are the quizzes available</h3>
+
+{% for quiz in query %}
+  <div class="card shadow" style="width: 13rem; display: inline-flex; margin: 15px;">
+    <img src="{{quiz.image.url}}" class="card-img-top" alt="{{quiz.name}}" height="100px">
+    <div class="card-body" style="text-align: center;">
+      <h5 class="card-title">{{quiz.number_of_question}} Questions</h5>
+      <a href="#" class="btn btn-primary">Start Quiz</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+</body>
+</html>
+ 
+  {% endblock content %}
