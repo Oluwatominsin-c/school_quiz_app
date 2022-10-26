@@ -12,4 +12,10 @@ class Quiz(models.Model):
     def __str__(self) -> str:
         return self.name
 
-    
+class Phy101(models.Model):
+    question = models.CharField(max_length=1000)
+    option1 = models.CharField(max_length=1000)
+    option2 = models.CharField(max_length=1000)
+    option3 = models.CharField(max_length=1000)
+    option4 = models.CharField(max_length=1000)
+    answer = models.CharField(max_length=1000)

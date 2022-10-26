@@ -1,14 +1,85 @@
-{% extends "index.html" %}
+{% extends "index.html" %} {% block content %} {% load static %}
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Test Your Skills</title>
+    <link rel="stylesheet" href="{% static 'stylesheet.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="quiz">
+      <div id="info">
+        <div id="score">Score: 0</div>
+        <div id="ques-left">Question:1/20</div>
+      </div>
+      {% if i %}
+      <div id="ques-view"></div>
+      <div class="question">
+        <h1>{{i.question}}</h1>
+      </div>
 
-{% block content %}
-<div aria-label="Page navigation example">
-    <ul class="pagination">
-      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">Next</a></li>
-    </ul>
-</div>
+      <form action="" method="POST">
+        {% csrf_token %}
 
-{% endblock content %}
+        <div class="choice">
+          <div class="options">
+            <input type="radio" name="options" value="1" id="opt0" /><label
+              for="opt0"
+              id="lb0"
+              >{{i.option1}}</label
+            >
+          </div>
+          <div class="options">
+            <input type="radio" name="options" value="2" id="opt1" /><label
+              for="opt1"
+              id="lb1"
+              >{{i.option2}}</label
+            >
+          </div>
+          <div class="options">
+            <input
+              type="radio"
+              name="options"
+              value="3"
+              checked="checked"
+              id="opt2"
+            /><label for="opt2" id="lb2">{{i.option3}}</label>
+          </div>
+          <div class="options">
+            <input type="radio" name="options" value="4" id="opt3" /><label
+              for="opt3"
+              id="lb3"
+              >{{i.option4}}</label
+            >
+          </div>
+        </div>
+
+        {% endif %}
+
+        <div class="ans-btn">
+          <button type="button" class="submit-answer">Submit Answer</button>
+
+          {% comment %}
+          <a href="#display-final-score" type="button" class="view-results"
+            >View Results</a
+          >
+          {% endcomment %}
+        </div>
+      </form>
+
+      <div aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </div>
+      {% endblock content %}
+    </div>
+  </body>
+</html>

@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Quiz
+from .models import Quiz, Phy101
 # Create your views here.
+num = 0
 
 def quizzes(request):
     query = Quiz.objects.all()
@@ -8,5 +9,18 @@ def quizzes(request):
 
 
 def phy101(request):
-    return render(request, "phy101.html")
+    query = Phy101.objects.all()
+    print(query)
+    if request.method == "POST":
+        quest = query[num]
+        option_picked = request.POST["options"]
+        correct_answer = quest.answer
+        print(correct_answer)
+    
 
+    else:
+        return render(request, "phy101.html", {"i": query[num]})
+
+
+def new(request):
+    return render(request, "new.html")
