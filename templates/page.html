@@ -1,0 +1,62 @@
+{% extends "index.html" %} {% block content %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'page.css' %}" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <header></header>
+    <!-- <nav>
+        <ul>
+            <li><a href="#">dddd</a></li>
+            <li><a href="#">dddd</a></li>
+            <li><a href="#">dddd</a></li>
+            <li><a href="#">dddd</a></li>
+        </ul>
+    </nav> -->
+    <div class="main-body">
+      <div class="inner-body">
+        <section id="info">
+          <h1 style="text-align: center">{{name}} CBE</h1>
+        </section>
+        <form action="">
+          <ol>
+            {% for i in query %}
+            <section class="section">
+              <li class="question">{{i.question}}</li>
+              <label
+                ><input type="radio" value="1" name="{{i.id}}" />
+                {{i.option1}}</label
+              >
+              <label
+                ><input type="radio" value="2" name="{{i.id}}" />
+                {{i.option2}}</label
+              >
+              <label
+                ><input type="radio" value="3" name="{{i.id}}" />
+                {{i.option3}}</label
+              >
+              <label
+                ><input type="radio" value="4" name="{{i.id}}" />
+                {{i.option4}}</label
+              >
+            </section>
+            {% endfor %}
+          </ol>
+
+          <div class="submit-button">
+            <button type="submit">Submit</button>
+            {% comment %} <a href="http://" id="next">Next</a> {% endcomment %}
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock content %}

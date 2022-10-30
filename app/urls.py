@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import quizzes, phy101, new
+from .views import quizzes, page, new, question
 
 urlpatterns = [
     path("", quizzes, name="quizzes"),
-    path("phy101/", phy101, name="phy101"),
-    path("new/", new)
+    path("page/", page, name="page"),
+    path("page/<str:pk>", question, name="question"),
 ]
